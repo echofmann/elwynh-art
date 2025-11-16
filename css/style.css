@@ -179,9 +179,18 @@ main {
     display: none;
 }
 
-.artwork-item img {
+/* Vertical artwork (4:5 ratio - portrait) */
+.artwork-item[data-orientation="vertical"] img {
     width: 100%;
-    height: 400px; /* 4:5 ratio for 320px wide = 400px tall */
+    height: 400px; /* 4:5 ratio */
+    object-fit: cover;
+    display: block;
+}
+
+/* Horizontal artwork (5:4 ratio - landscape) */
+.artwork-item[data-orientation="horizontal"] img {
+    width: 100%;
+    height: 320px; /* 5:4 ratio */
     object-fit: cover;
     display: block;
 }
@@ -533,8 +542,14 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    .artwork-item img {
-        height: 480px; /* 4:5 ratio for tablet (384px wide -> 480px tall) */
+    /* Vertical artwork on tablet */
+    .artwork-item[data-orientation="vertical"] img {
+        height: 480px; /* 4:5 ratio */
+    }
+    
+    /* Horizontal artwork on tablet */
+    .artwork-item[data-orientation="horizontal"] img {
+        height: 384px; /* 5:4 ratio */
     }
     
     .about-content {
@@ -543,7 +558,7 @@ footer {
     }
     
     .about-image img {
-        height: 450px; /* 3:4 ratio for profile photo (338px wide -> 450px tall) */
+        height: 450px; /* 3:4 ratio for profile photo */
     }
     
     .services-grid {
@@ -571,11 +586,17 @@ footer {
         grid-template-columns: repeat(3, 1fr);
     }
     
-    .artwork-item img {
-        height: 500px; /* 4:5 ratio for desktop (400px wide -> 500px tall) */
+    /* Vertical artwork on desktop */
+    .artwork-item[data-orientation="vertical"] img {
+        height: 500px; /* 4:5 ratio */
+    }
+    
+    /* Horizontal artwork on desktop */
+    .artwork-item[data-orientation="horizontal"] img {
+        height: 400px; /* 5:4 ratio */
     }
     
     .about-image img {
-        height: 400px; /* 3:4 ratio for profile photo (300px wide -> 400px tall) */
+        height: 400px; /* 3:4 ratio for profile photo */
     }
 }
