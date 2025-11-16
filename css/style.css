@@ -1,0 +1,162 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-black: #1a1a1a;
+    --soft-black: #2a2a2a;
+    --light-gray: #f8f8f8;
+    --border-gray: #e0e0e0;
+    
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-serif: Georgia, 'Times New Roman', serif;
+    
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--primary-black);
+    background: white;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: normal;
+}
+
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.25rem; margin-bottom: var(--spacing-sm); }
+h3 { font-size: 1rem; }
+
+/* Navigation */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--border-gray);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-md);
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--primary-black);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    border-bottom: 2px solid var(--primary-black);
+}
+
+/* Layout */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.hero {
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+    border-bottom: 1px solid var(--border-gray);
+}
+
+/* Gallery */
+.gallery {
+    padding: var(--spacing-xl) 0;
+}
+
+.artwork-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+}
+
+.artwork-item {
+    border: 1px solid var(--border-gray);
+    overflow: hidden;
+}
+
+.artwork-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.artwork-details {
+    padding: var(--spacing-md);
+}
+
+.artwork-type {
+    color: var(--soft-black);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-sm);
+}
+
+.pricing {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+    padding: 0.5rem var(--spacing-sm);
+    border: 2px solid var(--primary-black);
+    background: white;
+    color: var(--primary-black);
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-primary:hover {
+    background: var(--primary-black);
+    color: white;
+}
+
+.btn-secondary {
+    border-color: var(--soft-black);
+    color: var(--soft-black);
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid var(--border-gray);
+    padding: var(--spacing-lg);
+    text-align: center;
+    color: var(--soft-black);
+    font-size: 0.85rem;
+}
+
+/* Mobile Responsive */
+@media (min-width: 768px) {
+    .artwork-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .artwork-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
