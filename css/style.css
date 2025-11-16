@@ -182,7 +182,7 @@ main {
 /* Vertical artwork (4:5 ratio - portrait) */
 .artwork-item[data-orientation="vertical"] img {
     width: 100%;
-    height: 400px; /* 4:5 ratio */
+    height: 400px; /* 4:5 ratio (320px wide -> 400px tall) */
     object-fit: cover;
     display: block;
 }
@@ -190,7 +190,7 @@ main {
 /* Horizontal artwork (5:4 ratio - landscape) */
 .artwork-item[data-orientation="horizontal"] img {
     width: 100%;
-    height: 320px; /* 5:4 ratio */
+    height: 256px; /* 5:4 ratio (320px wide -> 256px tall) */
     object-fit: cover;
     display: block;
 }
@@ -203,7 +203,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
 }
 
 .artwork-header h3 {
@@ -211,21 +211,11 @@ main {
     flex: 1;
 }
 
-.artwork-year {
-    color: var(--medium-gray);
-    font-size: 0.8rem;
-    font-weight: normal;
-    text-align: right;
-    flex-shrink: 0;
-    margin-left: var(--spacing-sm);
-}
-
-.artwork-type {
+.artwork-info {
     color: var(--medium-gray);
     font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--spacing-sm);
+    line-height: 1.4;
+    margin-bottom: var(--spacing-md);
 }
 
 .pricing {
@@ -542,14 +532,14 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    /* Vertical artwork on tablet */
+    /* Vertical artwork on tablet (4:5 ratio) */
     .artwork-item[data-orientation="vertical"] img {
-        height: 480px; /* 4:5 ratio */
+        height: 480px; /* 4:5 ratio (384px wide -> 480px tall) */
     }
     
-    /* Horizontal artwork on tablet */
+    /* Horizontal artwork on tablet (5:4 ratio) */
     .artwork-item[data-orientation="horizontal"] img {
-        height: 384px; /* 5:4 ratio */
+        height: 307px; /* 5:4 ratio (384px wide -> 307px tall) */
     }
     
     .about-content {
@@ -586,14 +576,14 @@ footer {
         grid-template-columns: repeat(3, 1fr);
     }
     
-    /* Vertical artwork on desktop */
+    /* Vertical artwork on desktop (4:5 ratio) */
     .artwork-item[data-orientation="vertical"] img {
-        height: 500px; /* 4:5 ratio */
+        height: 400px; /* 4:5 ratio (320px wide -> 400px tall) */
     }
     
-    /* Horizontal artwork on desktop */
+    /* Horizontal artwork on desktop (5:4 ratio) */
     .artwork-item[data-orientation="horizontal"] img {
-        height: 400px; /* 5:4 ratio */
+        height: 256px; /* 5:4 ratio (320px wide -> 256px tall) */
     }
     
     .about-image img {
