@@ -12,7 +12,7 @@
         <nav>
             <div class="nav-container">
                 <div class="logo">
-                    <h1>Elwyn H.</h1>
+                    <h1><a href="index.html">Elwyn H.</a></h1>
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="active">Gallery</a></li>
@@ -26,20 +26,109 @@
     <main>
         <section class="hero">
             <h2>Architectural Art & Field Sketches</h2>
-            <p>Original drawings and limited prints capturing architectural details and urban landscapes.</p>
+            <p>Original drawings and limited prints capturing the essence of architectural form, urban landscapes, and the built environment.</p>
         </section>
 
         <section class="gallery">
             <div class="artwork-grid">
-                <!-- We'll add artwork items here -->
+                <!-- Field Sketch Example 1 -->
                 <div class="artwork-item">
-                    <img src="images/artwork/placeholder.jpg" alt="Coming soon" loading="lazy">
+                    <img src="images/artwork/field-sketch-1.jpg" alt="Urban street corner architectural sketch" loading="lazy">
                     <div class="artwork-details">
-                        <h3>Sample Artwork</h3>
+                        <h3>Urban Corner Study</h3>
                         <p class="artwork-type">Field Sketch</p>
                         <div class="pricing">
-                            <button class="btn-primary">Original - $150</button>
-                            <button class="btn-secondary">Print - $35</button>
+                            <button class="btn-primary" data-price-id="price_field_original_1" data-amount="15000">
+                                Original - $150
+                            </button>
+                            <button class="btn-secondary" data-price-id="price_field_print_1" data-amount="3500">
+                                Print - $35
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Drawing Example 1 -->
+                <div class="artwork-item">
+                    <img src="images/artwork/detailed-1.jpg" alt="Detailed architectural facade drawing" loading="lazy">
+                    <div class="artwork-details">
+                        <h3>Heritage Building Facade</h3>
+                        <p class="artwork-type">Detailed Drawing</p>
+                        <div class="pricing">
+                            <button class="btn-primary" data-price-id="price_detailed_original_1" data-amount="25000">
+                                Original - $250
+                            </button>
+                            <button class="btn-secondary" data-price-id="price_detailed_print_1" data-amount="7500">
+                                Print - $75
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Field Sketch Example 2 -->
+                <div class="artwork-item">
+                    <img src="images/artwork/field-sketch-2.jpg" alt="Market street scene architectural sketch" loading="lazy">
+                    <div class="artwork-details">
+                        <h3>Market Street Scene</h3>
+                        <p class="artwork-type">Field Sketch</p>
+                        <div class="pricing">
+                            <button class="btn-primary" data-price-id="price_field_original_2" data-amount="17500">
+                                Original - $175
+                            </button>
+                            <button class="btn-secondary" data-price-id="price_field_print_2" data-amount="4000">
+                                Print - $40
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interior Study Example -->
+                <div class="artwork-item">
+                    <img src="images/artwork/interior-1.jpg" alt="Interior space architectural study" loading="lazy">
+                    <div class="artwork-details">
+                        <h3>Café Interior Study</h3>
+                        <p class="artwork-type">Interior Drawing</p>
+                        <div class="pricing">
+                            <button class="btn-primary" data-price-id="price_interior_original_1" data-amount="22000">
+                                Original - $220
+                            </button>
+                            <button class="btn-secondary" data-price-id="price_interior_print_1" data-amount="6000">
+                                Print - $60
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Drawing Example 2 -->
+                <div class="artwork-item">
+                    <img src="images/artwork/detailed-2.jpg" alt="Gothic architecture detailed study" loading="lazy">
+                    <div class="artwork-details">
+                        <h3>Gothic Revival Details</h3>
+                        <p class="artwork-type">Detailed Drawing</p>
+                        <div class="pricing">
+                            <button class="btn-primary" data-price-id="price_detailed_original_2" data-amount="30000">
+                                Original - $300
+                            </button>
+                            <button class="btn-secondary" data-price-id="price_detailed_print_2" data-amount="8000">
+                                Print - $80
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Field Sketch Example 3 -->
+                <div class="artwork-item">
+                    <img src="images/artwork/field-sketch-3.jpg" alt="Residential street architectural sketch" loading="lazy">
+                    <div class="artwork-details">
+                        <h3>Residential Streetscape</h3>
+                        <p class="artwork-type">Field Sketch</p>
+                        <div class="pricing">
+                            <button class="btn-primary" data-price-id="price_field_original_3" data-amount="16000">
+                                Original - $160
+                            </button>
+                            <button class="btn-secondary" data-price-id="price_field_print_3" data-amount="3750">
+                                Print - $38
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -50,5 +139,7 @@
     <footer>
         <p>&copy; 2024 Elwyn H. All rights reserved.</p>
     </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
