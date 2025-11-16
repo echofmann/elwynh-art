@@ -12,12 +12,56 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', handlePurchaseClick);
     });
 
+    // Initialize gallery filtering
+    initializeGalleryFiltering();
+
     // Add smooth scrolling for anchor links
     addSmoothScrolling();
     
     // Initialize any other interactive elements
     initializeGallery();
 });
+
+/**
+ * Initialize gallery filtering functionality
+ */
+function initializeGalleryFiltering() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const artworkItems = document.querySelectorAll('.artwork-item');
+    
+    if (filterButtons.length === 0 || artworkItems.length === 0) return;
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.dataset.filter;
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter artwork items
+            artworkItems.forEach(item => {
+                const category = item.dataset.category;
+                
+                if (filter === 'all' || category === filter) {
+                    item.classList.remove('hidden');
+                    // Add a slight delay for smooth appearance
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.95)';
+                    // Hide after animation
+                    setTimeout(() => {
+                        item.classList.add('hidden');
+                    }, 200);
+                }
+            });
+        });
+    });
+}
 
 /**
  * Handle commission form submission
