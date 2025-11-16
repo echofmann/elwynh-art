@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elwyn H. - Architectural Art & Sketches</title>
+    <title>Elwyn Hofmann - Architectural Art & Sketches</title>
     <meta name="description" content="Original architectural sketches and detailed drawings. Field sketches, commissioned work, and limited prints.">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -12,7 +12,7 @@
         <nav>
             <div class="nav-container">
                 <div class="logo">
-                    <h1><a href="index.html">Elwyn H.</a></h1>
+                    <h1><a href="index.html">Elwyn Hofmann</a></h1>
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="active">Gallery</a></li>
@@ -25,17 +25,28 @@
 
     <main>
         <section class="hero">
-            <h2>Architectural Art & Field Sketches</h2>
+            <h2>Sketches and Drawings</h2>
             <p>Original drawings and limited prints capturing the essence of architectural form, urban landscapes, and the built environment.</p>
+        </section>
+
+        <section class="gallery-filters">
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">All Work</button>
+                <button class="filter-btn" data-filter="sketches">Sketches</button>
+                <button class="filter-btn" data-filter="studies">Studies</button>
+            </div>
         </section>
 
         <section class="gallery">
             <div class="artwork-grid">
                 <!-- Field Sketch Example 1 -->
-                <div class="artwork-item">
+                <div class="artwork-item" data-category="sketches">
                     <img src="images/artwork/field-sketch-1.jpg" alt="Urban street corner architectural sketch" loading="lazy">
                     <div class="artwork-details">
-                        <h3>Urban Corner Study</h3>
+                        <div class="artwork-header">
+                            <h3>Urban Corner Study</h3>
+                            <span class="artwork-year">2024</span>
+                        </div>
                         <p class="artwork-type">Field Sketch</p>
                         <div class="pricing">
                             <button class="btn-primary" data-price-id="price_field_original_1" data-amount="15000">
@@ -48,12 +59,15 @@
                     </div>
                 </div>
 
-                <!-- Detailed Drawing Example 1 -->
-                <div class="artwork-item">
-                    <img src="images/artwork/detailed-1.jpg" alt="Detailed architectural facade drawing" loading="lazy">
+                <!-- Detailed Study Example 1 -->
+                <div class="artwork-item" data-category="studies">
+                    <img src="images/artwork/detailed-1.jpg" alt="Detailed architectural facade study" loading="lazy">
                     <div class="artwork-details">
-                        <h3>Heritage Building Facade</h3>
-                        <p class="artwork-type">Detailed Drawing</p>
+                        <div class="artwork-header">
+                            <h3>Heritage Building Facade</h3>
+                            <span class="artwork-year">2024</span>
+                        </div>
+                        <p class="artwork-type">Architectural Study</p>
                         <div class="pricing">
                             <button class="btn-primary" data-price-id="price_detailed_original_1" data-amount="25000">
                                 Original - $250
@@ -66,10 +80,13 @@
                 </div>
 
                 <!-- Field Sketch Example 2 -->
-                <div class="artwork-item">
+                <div class="artwork-item" data-category="sketches">
                     <img src="images/artwork/field-sketch-2.jpg" alt="Market street scene architectural sketch" loading="lazy">
                     <div class="artwork-details">
-                        <h3>Market Street Scene</h3>
+                        <div class="artwork-header">
+                            <h3>Market Street Scene</h3>
+                            <span class="artwork-year">2025</span>
+                        </div>
                         <p class="artwork-type">Field Sketch</p>
                         <div class="pricing">
                             <button class="btn-primary" data-price-id="price_field_original_2" data-amount="17500">
@@ -83,11 +100,14 @@
                 </div>
 
                 <!-- Interior Study Example -->
-                <div class="artwork-item">
+                <div class="artwork-item" data-category="studies">
                     <img src="images/artwork/interior-1.jpg" alt="Interior space architectural study" loading="lazy">
                     <div class="artwork-details">
-                        <h3>Café Interior Study</h3>
-                        <p class="artwork-type">Interior Drawing</p>
+                        <div class="artwork-header">
+                            <h3>Café Interior Study</h3>
+                            <span class="artwork-year">2024</span>
+                        </div>
+                        <p class="artwork-type">Interior Study</p>
                         <div class="pricing">
                             <button class="btn-primary" data-price-id="price_interior_original_1" data-amount="22000">
                                 Original - $220
@@ -99,12 +119,15 @@
                     </div>
                 </div>
 
-                <!-- Detailed Drawing Example 2 -->
-                <div class="artwork-item">
+                <!-- Detailed Study Example 2 -->
+                <div class="artwork-item" data-category="studies">
                     <img src="images/artwork/detailed-2.jpg" alt="Gothic architecture detailed study" loading="lazy">
                     <div class="artwork-details">
-                        <h3>Gothic Revival Details</h3>
-                        <p class="artwork-type">Detailed Drawing</p>
+                        <div class="artwork-header">
+                            <h3>Gothic Revival Details</h3>
+                            <span class="artwork-year">2025</span>
+                        </div>
+                        <p class="artwork-type">Architectural Study</p>
                         <div class="pricing">
                             <button class="btn-primary" data-price-id="price_detailed_original_2" data-amount="30000">
                                 Original - $300
@@ -117,10 +140,13 @@
                 </div>
 
                 <!-- Field Sketch Example 3 -->
-                <div class="artwork-item">
+                <div class="artwork-item" data-category="sketches">
                     <img src="images/artwork/field-sketch-3.jpg" alt="Residential street architectural sketch" loading="lazy">
                     <div class="artwork-details">
-                        <h3>Residential Streetscape</h3>
+                        <div class="artwork-header">
+                            <h3>Residential Streetscape</h3>
+                            <span class="artwork-year">2024</span>
+                        </div>
                         <p class="artwork-type">Field Sketch</p>
                         <div class="pricing">
                             <button class="btn-primary" data-price-id="price_field_original_3" data-amount="16000">
@@ -137,7 +163,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Elwyn H. All rights reserved.</p>
+        <p>&copy; 2024 Elwyn Hofmann. All rights reserved.</p>
     </footer>
 
     <script src="js/main.js"></script>
