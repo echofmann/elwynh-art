@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /**
  * Initialize lightbox functionality for artwork images
+ * Updated to support dual image system (thumbnails vs full images)
  */
 function initializeLightbox() {
     const lightbox = document.getElementById('lightbox');
@@ -43,12 +44,35 @@ function initializeLightbox() {
             const title = this.dataset.title || this.alt;
             const info = this.dataset.info || '';
             
-            lightboxImage.src = this.src;
+            // Use full-size image for lightbox, fallback to thumbnail if not available
+            const fullImageSrc = this.dataset.fullImage || this.src;
+            
+            // Show loading state
+            lightboxImage.style.opacity = '0.5';
+            lightboxImage.src = fullImageSrc;
             lightboxImage.alt = this.alt;
             lightboxInfo.textContent = info;
             
+            // Show lightbox
             lightbox.style.display = 'block';
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            
+            // Handle image load
+            lightboxImage.onload = function() {
+                lightboxImage.style.opacity = '1';
+            };
+            
+            // Handle image load error (fallback to thumbnail)
+            lightboxImage.onerror = function() {
+                if (this.src !== img.src) {
+                    console.warn('Full-size image failed to load, falling back to thumbnail:', fullImageSrc);
+                    this.src = img.src; // Fallback to thumbnail
+                } else {
+                    console.error('Both full-size and thumbnail images failed to load');
+                    this.alt = 'Image could not be loaded';
+                }
+                this.style.opacity = '1';
+            };
         });
     });
     
@@ -72,6 +96,11 @@ function initializeLightbox() {
     function closeLightbox() {
         lightbox.style.display = 'none';
         document.body.style.overflow = ''; // Restore scrolling
+        
+        // Reset lightbox image
+        lightboxImage.style.opacity = '1';
+        lightboxImage.onload = null;
+        lightboxImage.onerror = null;
     }
 }
 
@@ -92,7 +121,7 @@ function initializeGalleryFiltering() {
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             
-            // Filter artwork items
+            // Filter artwork items with smooth animation
             artworkItems.forEach(item => {
                 const category = item.dataset.category;
                 
@@ -226,7 +255,7 @@ Price: ${button.textContent}
 Please email hello@elwynh.com to inquire about this piece.`);
     
     // TODO: Implement Stripe Checkout
-    // This will be replaced with actual Stripe integration in Step 4
+    // This will be replaced with actual Stripe integration
 }
 
 /**
@@ -253,26 +282,90 @@ function addSmoothScrolling() {
 }
 
 /**
- * Initialize gallery interactions
+ * Initialize gallery interactions and image handling
  */
 function initializeGallery() {
     const artworkItems = document.querySelectorAll('.artwork-item');
     
-    // Add loading states to images
+    // Add loading states to images and enhanced error handling
     artworkItems.forEach(item => {
         const img = item.querySelector('img');
         if (img) {
+            // Add loading class initially
+            img.classList.add('loading');
+            
             img.addEventListener('load', function() {
+                this.classList.remove('loading');
                 this.classList.add('loaded');
             });
             
-            // Add error handling for missing images
+            // Enhanced error handling for missing thumbnail images
             img.addEventListener('error', function() {
-                this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOGY4Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SW1hZ2UgQ29taW5nIFNvb248L3RleHQ+PC9zdmc+';
-                this.alt = 'Image coming soon';
+                console.warn('Thumbnail image failed to load:', this.src);
+                
+                // Create a placeholder SVG for missing thumbnails
+                const placeholderSvg = createPlaceholderImage(
+                    this.dataset.title || 'Artwork', 
+                    '600', 
+                    '600'
+                );
+                
+                this.src = placeholderSvg;
+                this.alt = `${this.dataset.title || 'Artwork'} - Image coming soon`;
+                this.classList.remove('loading');
+                this.classList.add('placeholder');
             });
         }
     });
+    
+    // Preload full-size images for better lightbox performance (optional)
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target.querySelector('img');
+                    const fullImageSrc = img.dataset.fullImage;
+                    
+                    if (fullImageSrc) {
+                        // Preload full-size image
+                        const fullImg = new Image();
+                        fullImg.src = fullImageSrc;
+                    }
+                    
+                    imageObserver.unobserve(entry.target);
+                }
+            });
+        });
+        
+        artworkItems.forEach(item => {
+            imageObserver.observe(item);
+        });
+    }
+}
+
+/**
+ * Create a placeholder SVG image for missing artwork
+ */
+function createPlaceholderImage(title, width, height) {
+    const svg = `
+        <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100%" height="100%" fill="#f8f8f8" stroke="#e0e0e0" stroke-width="2"/>
+            <text x="50%" y="40%" 
+                  font-family="Georgia, serif" 
+                  font-size="18" 
+                  fill="#666" 
+                  text-anchor="middle" 
+                  dy="0.35em">${title}</text>
+            <text x="50%" y="60%" 
+                  font-family="Arial, sans-serif" 
+                  font-size="14" 
+                  fill="#999" 
+                  text-anchor="middle" 
+                  dy="0.35em">Image Coming Soon</text>
+        </svg>
+    `.trim();
+    
+    return 'data:image/svg+xml;base64,' + btoa(svg);
 }
 
 /**
@@ -295,3 +388,36 @@ function setButtonLoading(button, loading = true) {
         button.textContent = button.dataset.originalText || 'Submit';
     }
 }
+
+/**
+ * Add some CSS for loading states and placeholders
+ */
+function addDynamicStyles() {
+    const styles = `
+        <style>
+            .artwork-item img.loading {
+                opacity: 0.6;
+                filter: blur(1px);
+            }
+            
+            .artwork-item img.loaded {
+                opacity: 1;
+                filter: none;
+                transition: opacity 0.3s ease, filter 0.3s ease;
+            }
+            
+            .artwork-item img.placeholder {
+                opacity: 0.8;
+            }
+            
+            .lightbox-content {
+                transition: opacity 0.2s ease;
+            }
+        </style>
+    `;
+    
+    document.head.insertAdjacentHTML('beforeend', styles);
+}
+
+// Add dynamic styles when DOM is ready
+document.addEventListener('DOMContentLoaded', addDynamicStyles);
