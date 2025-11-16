@@ -15,12 +15,65 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize gallery filtering
     initializeGalleryFiltering();
 
+    // Initialize lightbox functionality
+    initializeLightbox();
+
     // Add smooth scrolling for anchor links
     addSmoothScrolling();
     
     // Initialize any other interactive elements
     initializeGallery();
 });
+
+/**
+ * Initialize lightbox functionality for artwork images
+ */
+function initializeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxInfo = document.getElementById('lightbox-info');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    
+    if (!lightbox || !lightboxImage || !lightboxInfo || !lightboxClose) return;
+    
+    // Add click handlers to all artwork images
+    const artworkImages = document.querySelectorAll('.image-container img');
+    artworkImages.forEach(img => {
+        img.addEventListener('click', function() {
+            const title = this.dataset.title || this.alt;
+            const info = this.dataset.info || '';
+            
+            lightboxImage.src = this.src;
+            lightboxImage.alt = this.alt;
+            lightboxInfo.textContent = info;
+            
+            lightbox.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    });
+    
+    // Close lightbox when clicking the close button
+    lightboxClose.addEventListener('click', closeLightbox);
+    
+    // Close lightbox when clicking outside the image
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+    
+    // Close lightbox with escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.style.display === 'block') {
+            closeLightbox();
+        }
+    });
+    
+    function closeLightbox() {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+}
 
 /**
  * Initialize gallery filtering functionality
