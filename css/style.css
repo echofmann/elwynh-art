@@ -116,9 +116,42 @@ main {
     font-size: 1.05rem;
 }
 
+/* Gallery Filters */
+.gallery-filters {
+    padding: var(--spacing-lg) 0;
+    border-bottom: 1px solid var(--border-gray);
+}
+
+.filter-controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: var(--spacing-xs) var(--spacing-md);
+    border: 1px solid var(--border-gray);
+    background: white;
+    color: var(--medium-gray);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+    border-radius: var(--border-radius);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    border-color: var(--primary-black);
+    color: var(--primary-black);
+}
+
 /* Gallery */
 .gallery {
-    padding: var(--spacing-xxl) 0;
+    padding: var(--spacing-xl) 0;
 }
 
 .artwork-grid {
@@ -131,8 +164,10 @@ main {
     border: 1px solid var(--border-gray);
     border-radius: var(--border-radius);
     overflow: hidden;
-    transition: var(--transition);
+    transition: var(--transition), opacity 0.3s ease, transform 0.3s ease;
     background: white;
+    opacity: 1;
+    transform: scale(1);
 }
 
 .artwork-item:hover {
@@ -140,15 +175,40 @@ main {
     transform: translateY(-2px);
 }
 
+.artwork-item.hidden {
+    display: none;
+}
+
 .artwork-item img {
     width: 100%;
-    height: 300px;
+    height: 400px; /* 4:5 ratio for 320px wide = 400px tall */
     object-fit: cover;
     display: block;
 }
 
 .artwork-details {
     padding: var(--spacing-md);
+}
+
+.artwork-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-xs);
+}
+
+.artwork-header h3 {
+    margin: 0;
+    flex: 1;
+}
+
+.artwork-year {
+    color: var(--medium-gray);
+    font-size: 0.8rem;
+    font-weight: normal;
+    text-align: right;
+    flex-shrink: 0;
+    margin-left: var(--spacing-sm);
 }
 
 .artwork-type {
@@ -473,9 +533,17 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    .artwork-item img {
+        height: 480px; /* 4:5 ratio for tablet (384px wide -> 480px tall) */
+    }
+    
     .about-content {
         grid-template-columns: 300px 1fr;
         gap: var(--spacing-xxl);
+    }
+    
+    .about-image img {
+        height: 450px; /* 3:4 ratio for profile photo (338px wide -> 450px tall) */
     }
     
     .services-grid {
@@ -504,6 +572,10 @@ footer {
     }
     
     .artwork-item img {
-        height: 350px;
+        height: 500px; /* 4:5 ratio for desktop (400px wide -> 500px tall) */
+    }
+    
+    .about-image img {
+        height: 400px; /* 3:4 ratio for profile photo (300px wide -> 400px tall) */
     }
 }
