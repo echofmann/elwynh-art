@@ -438,6 +438,99 @@ main {
     margin-top: var(--spacing-md);
 }
 
+/* NEW: Pricing Section */
+.pricing-container {
+    text-align: center;
+}
+
+.pricing-intro {
+    color: var(--medium-gray);
+    max-width: 600px;
+    margin: var(--spacing-md) auto var(--spacing-xl);
+    font-size: 1.05rem;
+}
+
+.pricing-grid {
+    display: grid;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.pricing-card {
+    border: 1px solid var(--border-gray);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    transition: var(--transition);
+    text-align: center;
+    position: relative;
+    background: white;
+}
+
+.pricing-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.pricing-card.featured {
+    border-color: var(--primary-black);
+    border-width: 2px;
+}
+
+.pricing-card h4 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary-black);
+}
+
+.size-description {
+    color: var(--medium-gray);
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-black);
+    margin-bottom: var(--spacing-xs);
+    font-family: var(--font-serif);
+}
+
+.includes {
+    color: var(--medium-gray);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.popular-badge {
+    position: absolute;
+    top: -10px;
+    right: var(--spacing-md);
+    background: var(--primary-black);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.custom-size-note {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--light-gray);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-gray);
+}
+
+.custom-size-note p {
+    margin: 0;
+    color: var(--medium-gray);
+    text-align: center;
+}
+
 /* Timeline */
 .process-timeline {
     padding: var(--spacing-xxl) 0;
@@ -538,6 +631,28 @@ main {
 .form-group textarea {
     resize: vertical;
     min-height: 120px;
+}
+
+/* NEW: File Input Styles */
+.file-input {
+    padding: var(--spacing-sm) !important;
+    border: 2px dashed var(--border-gray) !important;
+    background: var(--light-gray);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.file-input:hover,
+.file-input:focus {
+    border-color: var(--primary-black) !important;
+    background: white;
+}
+
+.form-help {
+    color: var(--medium-gray);
+    font-size: 0.85rem;
+    margin-top: var(--spacing-xs);
+    margin-bottom: 0;
 }
 
 .success-message {
@@ -649,6 +764,10 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
     .process-grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -668,6 +787,10 @@ footer {
     
     .services-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .pricing-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
     
     .artwork-item img {
