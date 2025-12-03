@@ -147,7 +147,7 @@ function initializeGalleryFiltering() {
 
 /**
  * Handle commission form submission
- * Updated for proper server submission with Ajax and fallback
+ * Updated for proper server submission with Ajax and better error handling
  */
 function handleCommissionForm(event) {
     event.preventDefault();
@@ -174,24 +174,36 @@ function handleCommissionForm(event) {
         }
     })
     .then(response => {
+        console.log('Response status:', response.status);
+        console.log('Response ok:', response.ok);
+        
         if (response.ok) {
             showSuccessMessage();
         } else {
-            response.json().then(data => {
+            return response.json().then(data => {
+                console.log('Error data:', data);
                 if (data.errors) {
-                    alert('There were errors with your submission:\n' + data.errors.map(error => error.message).join('\n'));
+                    const errorMessage = data.errors.map(error => error.message).join('\n');
+                    alert('There were errors with your submission:\n' + errorMessage);
                 } else {
-                    throw new Error('Form submission failed');
+                    throw new Error(`Form submission failed with status: ${response.status}`);
                 }
+            }).catch(() => {
+                // If we can't parse the JSON, throw a generic error
+                throw new Error(`Form submission failed with status: ${response.status}`);
             });
         }
     })
     .catch(error => {
         console.error('Error submitting form:', error);
         
-        // Fallback: try native form submission
-        alert('Submitting form... Please wait for redirect.');
-        form.submit();
+        // Show user-friendly error message
+        alert(`There was an error submitting your form: ${error.message}\n\nPlease try again, or email hello@elwynh.com directly.`);
+        
+        // Alternative: Try native form submission as fallback
+        // Uncomment the next two lines if you want automatic fallback
+        // alert('Trying alternative submission method...');
+        // form.submit();
     })
     .finally(() => {
         setButtonLoading(submitButton, false);
