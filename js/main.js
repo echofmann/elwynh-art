@@ -147,37 +147,55 @@ function initializeGalleryFiltering() {
 
 /**
  * Handle commission form submission
- * Updated to handle file uploads and new form structure
+ * Updated for proper server submission with Ajax and fallback
  */
 function handleCommissionForm(event) {
     event.preventDefault();
     
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData.entries());
+    const form = event.target;
+    const formData = new FormData(form);
+    const submitButton = form.querySelector('button[type="submit"]');
     
     // Basic form validation
+    const data = Object.fromEntries(formData.entries());
     if (!validateCommissionForm(data)) {
         return;
     }
     
-    // Check for uploaded files
-    const fileInput = document.getElementById('reference_photos');
-    const hasFiles = fileInput && fileInput.files.length > 0;
+    // Show loading state
+    setButtonLoading(submitButton, true);
     
-    // Create email content
-    const emailSubject = `Commission Inquiry: ${data.size || 'Custom Size'}`;
-    const emailBody = formatEmailBody(data, hasFiles);
-    
-    // Use mailto as fallback (will be replaced with proper submission later)
-    const mailtoLink = `mailto:hello@elwynh.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-    
-    try {
-        window.location.href = mailtoLink;
-        showSuccessMessage();
-    } catch (error) {
+    // Submit via Ajax for better UX
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            showSuccessMessage();
+        } else {
+            response.json().then(data => {
+                if (data.errors) {
+                    alert('There were errors with your submission:\n' + data.errors.map(error => error.message).join('\n'));
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            });
+        }
+    })
+    .catch(error => {
         console.error('Error submitting form:', error);
-        alert('Sorry, there was an error submitting your inquiry. Please try emailing hello@elwynh.com directly.');
-    }
+        
+        // Fallback: try native form submission
+        alert('Submitting form... Please wait for redirect.');
+        form.submit();
+    })
+    .finally(() => {
+        setButtonLoading(submitButton, false);
+    });
 }
 
 /**
