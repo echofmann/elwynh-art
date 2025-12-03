@@ -26,50 +26,10 @@
     <main>
         <section class="page-hero">
             <h2>Commissions</h2>
-            <p>Architectural drawings tailored to your vision. From building portraits to urban studies, each piece is created specifically for you.</p>
+            <p>Architectural drawings tailored to your vision. From building portraits to urban studies, each piece is created specifically for you. All commissioned drawings are professionally framed and include archival matboard.</p>
         </section>
 
-        <section class="services-section">
-            <div class="pricing-container">
-                <h3>Pricing & Sizes</h3>
-                <p class="pricing-intro">All commissioned drawings are professionally framed and include archival matboard. Pricing is based on the finished size of your artwork.</p>
-                
-                <div class="pricing-grid">
-                    <div class="pricing-card">
-                        <h4>9" × 12"</h4>
-                        <p class="size-description">Perfect for intimate spaces and detailed architectural studies. Ideal for smaller buildings or architectural details.</p>
-                        <p class="price">$350</p>
-                        <p class="includes">Includes professional framing and matboard</p>
-                    </div>
 
-                    <div class="pricing-card featured">
-                        <h4>11" × 14"</h4>
-                        <p class="size-description">Our most popular size. Great balance of detail and presence for most architectural subjects and home display.</p>
-                        <p class="price">$450</p>
-                        <p class="includes">Includes professional framing and matboard</p>
-                        <span class="popular-badge">Most Popular</span>
-                    </div>
-
-                    <div class="pricing-card">
-                        <h4>14" × 17"</h4>
-                        <p class="size-description">Larger format for complex buildings or urban scenes that need more visual space to breathe.</p>
-                        <p class="price">$550</p>
-                        <p class="includes">Includes professional framing and matboard</p>
-                    </div>
-
-                    <div class="pricing-card">
-                        <h4>16" × 20"</h4>
-                        <p class="size-description">Statement piece size for significant buildings or detailed urban landscapes. Perfect for prominent display.</p>
-                        <p class="price">$650</p>
-                        <p class="includes">Includes professional framing and matboard</p>
-                    </div>
-                </div>
-                
-                <div class="custom-size-note">
-                    <p><strong>Custom sizes available</strong> – Contact me to discuss pricing for non-standard dimensions or special requirements.</p>
-                </div>
-            </div>
-        </section>
 
         <section class="process-timeline">
             <h3>Commission Process</h3>
@@ -78,28 +38,28 @@
                     <div class="timeline-number">1</div>
                     <div class="timeline-content">
                         <h4>Initial Consultation</h4>
-                        <p>Submit your inquiry with reference photos and vision. We'll discuss your project goals and confirm size and pricing.</p>
+                        <p>Submit an inquiry with your project details and reference photos. Standard sizes receive immediate pricing; custom dimensions include a brief discussion to prepare an accurate quote.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-number">2</div>
                     <div class="timeline-content">
-                        <h4>Quote & Agreement</h4>
-                        <p>Receive detailed quote and timeline (usually 2-4 weeks). 50% deposit secures your spot in the schedule.</p>
+                        <h4>Agreement & Deposit</h4>
+                        <p>You'll receive a finalized quote and an estimated timeline (typically 3–4 weeks). A 50% deposit confirms the commission and reserves your place in the studio schedule.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-number">3</div>
                     <div class="timeline-content">
-                        <h4>Creation Process</h4>
-                        <p>Site visit and initial sketches, followed by detailed studio work. Regular progress updates throughout.</p>
+                        <h4>Creation</h4>
+                        <p>Work begins using your approved reference materials. The piece is completed in the studio over the agreed timeline, allowing for a focused creative process.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-number">4</div>
                     <div class="timeline-content">
                         <h4>Completion & Delivery</h4>
-                        <p>Final approval, remaining payment, and secure delivery or pickup of your professionally framed artwork.</p>
+                        <p>Once the artwork is finished, the remaining balance is due. Your framed piece is then professionally packaged and shipped securely to your address.</p>
                     </div>
                 </div>
             </div>
@@ -108,7 +68,7 @@
         <section class="commission-form-section">
             <div class="form-container">
                 <h3>Request a Commission</h3>
-                <form id="commission-form" class="commission-form" enctype="multipart/form-data">
+                <form id="commission-form" class="commission-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Name *</label>
@@ -125,10 +85,9 @@
                             <label for="size">Preferred Size *</label>
                             <select id="size" name="size" required>
                                 <option value="">Select a size</option>
-                                <option value="9x12">9" × 12" - $350</option>
-                                <option value="11x14">11" × 14" - $450 (Most Popular)</option>
-                                <option value="14x17">14" × 17" - $550</option>
-                                <option value="16x20">16" × 20" - $650</option>
+                                <option value="9x12">9" × 12" - $300</option>
+                                <option value="11x14">11" × 14" - $350</option>
+                                <option value="16x20">16" × 20" - $400</option>
                                 <option value="custom">Custom Size (discuss pricing)</option>
                             </select>
                         </div>
@@ -156,13 +115,18 @@
 • Any specific details you want emphasized"></textarea>
                     </div>
 
+                    <!-- Hidden fields for better email formatting -->
+                    <input type="hidden" name="_subject" value="New Commission Inquiry">
+                    <input type="hidden" name="_next" value="https://elwynh.com/commissions.html#success">
+                    <input type="hidden" name="_cc" value="">
+                    
                     <button type="submit" class="btn-primary btn-large">Submit Commission Inquiry</button>
                 </form>
 
                 <div id="form-success" style="display: none;" class="success-message">
                     <h3>Thank You!</h3>
-                    <p>Your commission inquiry has been received. I'll respond within 24-48 hours with confirmation, timeline, and any follow-up questions.</p>
-                    <p>In the meantime, feel free to email additional reference photos to <a href="mailto:hello@elwynh.com">hello@elwynh.com</a>.</p>
+                    <p>Your commission inquiry has been received successfully. I'll respond within 24-48 hours with a detailed quote, timeline, and any follow-up questions.</p>
+                    <p>Your reference photos and project details have been securely submitted.</p>
                 </div>
             </div>
         </section>
