@@ -147,7 +147,7 @@ function initializeGalleryFiltering() {
 
 /**
  * Handle commission form submission
- * Currently uses mailto fallback - will be enhanced with proper backend later
+ * Updated to handle file uploads and new form structure
  */
 function handleCommissionForm(event) {
     event.preventDefault();
@@ -160,9 +160,13 @@ function handleCommissionForm(event) {
         return;
     }
     
+    // Check for uploaded files
+    const fileInput = document.getElementById('reference_photos');
+    const hasFiles = fileInput && fileInput.files.length > 0;
+    
     // Create email content
-    const emailSubject = `Commission Inquiry: ${data.project_type || 'Custom Project'}`;
-    const emailBody = formatEmailBody(data);
+    const emailSubject = `Commission Inquiry: ${data.size || 'Custom Size'}`;
+    const emailBody = formatEmailBody(data, hasFiles);
     
     // Use mailto as fallback (will be replaced with proper submission later)
     const mailtoLink = `mailto:hello@elwynh.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
@@ -178,9 +182,10 @@ function handleCommissionForm(event) {
 
 /**
  * Validate commission form data
+ * Updated for new form structure
  */
 function validateCommissionForm(data) {
-    const required = ['name', 'email', 'description'];
+    const required = ['name', 'email', 'description', 'size'];
     
     for (let field of required) {
         if (!data[field] || data[field].trim() === '') {
@@ -201,20 +206,21 @@ function validateCommissionForm(data) {
 
 /**
  * Format email body for commission inquiry
+ * Updated for new form structure
  */
-function formatEmailBody(data) {
+function formatEmailBody(data, hasFiles = false) {
     return `
 Commission Inquiry Details:
 
 Name: ${data.name}
 Email: ${data.email}
-Project Type: ${data.project_type || 'Not specified'}
-Budget Range: ${data.budget || 'Not specified'}
-Timeline: ${data.timeline || 'Not specified'}
+Size: ${data.size || 'Not specified'}
 Location: ${data.location || 'Not specified'}
 
 Project Description:
 ${data.description}
+
+${hasFiles ? 'Note: Reference photos were uploaded with this inquiry.' : ''}
 
 ---
 Sent from elwynh.com commission form
