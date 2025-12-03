@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed - Elwyn Hofmann</title>
+    <meta name="description" content="Your order has been confirmed. Thank you for your purchase!">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="index.html">Elwyn Hofmann</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Gallery</a></li>
+                    <li><a href="commissions.html">Commissions</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <h2>🎉 Order Confirmed!</h2>
+            <p>Thank you for your purchase. You'll receive a confirmation email shortly with your order details.</p>
+        </section>
+
+        <section class="success-content">
+            <div class="success-card">
+                <h3>What happens next?</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-number">1</div>
+                        <div class="timeline-content">
+                            <h4>Receipt Email</h4>
+                            <p>Check your inbox for your payment receipt from Stripe. This will include your order details and receipt.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">2</div>
+                        <div class="timeline-content">
+                            <h4>Order Processing</h4>
+                            <p>I'll prepare your artwork for shipment within 2-3 business days. All originals are professionally framed and packaged.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">3</div>
+                        <div class="timeline-content">
+                            <h4>Shipment Tracking</h4>
+                            <p>You'll receive tracking information via email once your artwork has been shipped.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">4</div>
+                        <div class="timeline-content">
+                            <h4>Delivery</h4>
+                            <p>Expect delivery within 5-7 business days for US domestic orders. International orders may take 10-14 days.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <p><strong>Questions about your order?</strong></p>
+                    <p>Email me at <a href="mailto:elwynchofmann@gmail.com">elwynchofmann@gmail.com</a></p>
+                    <p>Follow along on Instagram <a href="https://instagram.com/elwynh.art" target="_blank" rel="noopener">@elwynh.art</a></p>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="index.html" class="btn-primary btn-large">Return to Gallery</a>
+                <a href="about.html" class="btn-secondary btn-large">Learn More About the Artist</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Elwyn Hofmann. All rights reserved.</p>
+    </footer>
+
+    <style>
+        /* Additional styles for success page */
+        .success-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-xxl) var(--spacing-md);
+        }
+        
+        .success-card {
+            background: var(--light-gray);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-gray);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .success-card h3 {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .contact-info {
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--border-gray);
+            text-align: center;
+        }
+        
+        .contact-info p {
+            margin-bottom: var(--spacing-xs);
+            color: var(--medium-gray);
+        }
+        
+        .contact-info a {
+            color: var(--primary-black);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border-gray);
+        }
+        
+        .contact-info a:hover {
+            border-bottom-color: var(--primary-black);
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        @media (min-width: 768px) {
+            .action-buttons {
+                flex-direction: row;
+                max-width: 100%;
+            }
+            
+            .action-buttons .btn-large {
+                flex: 1;
+            }
+        }
+    </style>
+</body>
+</html>
