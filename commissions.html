@@ -29,37 +29,35 @@
             <p>Architectural drawings tailored to your vision. From building portraits to urban studies, each piece is created specifically for you. All commissioned drawings are professionally framed and include archival matboard.</p>
         </section>
 
-
-
         <section class="process-timeline">
             <h3>Commission Process</h3>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-number">1</div>
                     <div class="timeline-content">
-                        <h4>Initial Consultation</h4>
-                        <p>Submit an inquiry with your project details and reference photos. Standard sizes receive immediate pricing; custom dimensions include a brief discussion to prepare an accurate quote.</p>
+                        <h4>Submit Request</h4>
+                        <p>Fill out the commission form with your project details and preferred size. No photos needed at this stage.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-number">2</div>
                     <div class="timeline-content">
-                        <h4>Agreement & Deposit</h4>
-                        <p>You'll receive a finalized quote and an estimated timeline (typically 3–4 weeks). A 50% deposit confirms the commission and reserves your place in the studio schedule.</p>
+                        <h4>Email Follow-up</h4>
+                        <p>I'll email you within 24-48 hours with instructions for sending reference photos and a Stripe invoice for the 50% deposit.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-number">3</div>
                     <div class="timeline-content">
-                        <h4>Creation</h4>
-                        <p>Work begins using your approved reference materials. The piece is completed in the studio over the agreed timeline, allowing for a focused creative process.</p>
+                        <h4>Creation Begins</h4>
+                        <p>Once your deposit is received and reference photos are provided, work begins using your materials. Timeline is typically 3–4 weeks.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-number">4</div>
                     <div class="timeline-content">
                         <h4>Completion & Delivery</h4>
-                        <p>Once the artwork is finished, the remaining balance is due. Your framed piece is then professionally packaged and shipped securely to your address.</p>
+                        <p>Once the artwork is finished, the remaining balance is due. Your framed piece is then professionally packaged and shipped securely.</p>
                     </div>
                 </div>
             </div>
@@ -68,7 +66,7 @@
         <section class="commission-form-section">
             <div class="form-container">
                 <h3>Request a Commission</h3>
-                <form id="commission-form" class="commission-form" action="https://formspree.io/f/mrbnkrra" method="POST" enctype="multipart/form-data">
+                <form id="commission-form" class="commission-form" action="https://formspree.io/f/mrbnkrra" method="POST">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Name *</label>
@@ -97,11 +95,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="reference_photos">Reference Photos</label>
-                        <input type="file" id="reference_photos" name="reference_photos" multiple accept="image/*" class="file-input">
-                        <p class="form-help">Upload photos of the building or location you'd like drawn. Multiple files accepted.</p>
-                    </div>
+
 
                     <div class="form-group">
                         <label for="description">Project Description *</label>
@@ -109,14 +103,13 @@
                             placeholder="Please describe your vision in detail. Include:
 • What you'd like drawn (specific building, street, interior, etc.)
 • Style preferences (field sketch style, detailed study, etc.)
-• Any reference photos or inspiration
+• Any specific details you want emphasized
 • Special significance of the location
-• Intended use (gift, personal collection, etc.)
-• Any specific details you want emphasized"></textarea>
+• Intended use (gift, personal collection, etc.)"></textarea>
                     </div>
 
                     <!-- Hidden fields for better email formatting -->
-                    <input type="hidden" name="_subject" value="New Commission Inquiry">
+                    <input type="hidden" name="_subject" value="New Commission Inquiry - Reference Photo Instructions Needed">
                     <input type="hidden" name="_next" value="https://elwynh.com/commissions.html#success">
                     <input type="hidden" name="_cc" value="">
                     
@@ -125,8 +118,14 @@
 
                 <div id="form-success" style="display: none;" class="success-message">
                     <h3>Thank You!</h3>
-                    <p>Your commission inquiry has been received successfully. I'll respond within 24-48 hours with a detailed quote, timeline, and any follow-up questions.</p>
-                    <p>Your reference photos and project details have been securely submitted.</p>
+                    <p>Your commission inquiry has been received successfully.</p>
+                    <p><strong>I'll email you within 24-48 hours with:</strong></p>
+                    <ul style="text-align: left; margin: 1rem 0;">
+                        <li>Instructions for sending reference photos</li>
+                        <li>Stripe invoice for the 50% deposit</li>
+                        <li>Confirmed timeline for your project</li>
+                    </ul>
+                    <p>Please check your email for next steps.</p>
                 </div>
             </div>
         </section>
